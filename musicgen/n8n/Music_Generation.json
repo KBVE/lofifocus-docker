@@ -1,0 +1,354 @@
+{
+  "name": "Music Generation",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "generate-music",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "764647b0-58df-4029-a784-4ee5642bfbf1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        820,
+        360
+      ],
+      "webhookId": "c8c7ed59-0ee4-4e0d-8c3e-588ab6d86ad3"
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "prompt": {
+          "messages": [
+            {
+              "role": "system",
+              "content": "=There is a new AI called MusicGen which can generate a song given a prompt. Here are some example prompts:  \"lofi slow bpm electro chill with organic samples\" \"smooth, chilled out lofi hip hop beat with soft pianos, warm bass, and crisp vinyl crackles\" \"nostalgic lofi beat with mellow rhodes chords and subtle vocal chops\" \"Dreamy lofi hip hop track with atmospheric pads, slo-mo funky drums, and vintage vocal samples\" \"Laidback lofi beat with jazzy guitar licks, retro video game bloops, and a steady, head-nodding groove\" \"Sleepy lofi hip hop with warped, lo-fi synths, muddy boom-bap drums, and soft rainy ambience\" \"Upbeat lofi hip hop track with cheerful rhodes chords, colorful Nintendo samples, and an energetic but relaxed vibe\" \"Chill lofi beat using a slow 90 bpm tempo, filtered soul vocals, warm vinyl static, and mellow rhodes piano\" \"Lo-fi study music with simple coffee shop piano melodies, shuffling hi-hats, and cozy background chatter\" \"Spacey, ethereal lofi soundscape with modulated synth pads, hazy melodies, and a floating, dreamlike mood\"  You will be given the title and description of articles and stories. You will respond back with only a audio prompt string that represents that title and description."
+            },
+            {
+              "content": "=Title: {{ $json[\"title\"] }}\nDescription: {{ $json[\"description\"] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "47f391a8-d58d-4505-84e3-cef4c02fc059",
+      "name": "OpenAI",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        1240,
+        360
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "yyf3goM4Ts9glvG8",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "value": "={{ Date.now() * Math.floor(Math.random() * 100) }}.wav"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a0b53cb0-3bfb-46dd-8ca5-4704d3172fb4",
+      "name": "Set",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1920,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "hackathon",
+        "fileName": "={{ $json.propertyName }}",
+        "additionalFields": {}
+      },
+      "id": "d55dd680-ad2a-49d3-b966-1af5f23bebf2",
+      "name": "S3",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        2140,
+        360
+      ],
+      "credentials": {
+        "s3": {
+          "id": "2",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.out }}",
+        "options": {}
+      },
+      "id": "203f64ad-0273-4234-b7d7-f73125882442",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        2580,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "out",
+              "value": "=https://storageapi.webenclave.com/hackathon/{{ $('Set').item.json.propertyName }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1a794ea-a3f5-4fca-b189-9eb5826364d4",
+      "name": "Set1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        2360,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "=https://jsonlink.io/api/extract?url={{ $json.body.url }}",
+        "options": {}
+      },
+      "id": "653bac0a-cd03-4cb9-b5de-8717202c1323",
+      "name": "JsonLink",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1040,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://warm-cougars-burn.loca.lt/generate_music",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"model_name\": \"facebook/musicgen-small\",\n    \"duration\": 30,\n    \"prompt\": \"{{ $json[\"content\"] }}\",\n    \"strategy\": \"loudness\",\n    \"sampling\": true,\n    \"top_k\": 0,\n    \"top_p\": 0.9,\n    \"temperature\": 0.9,\n    \"use_diffusion\": false\n}",
+        "options": {}
+      },
+      "id": "0b513b45-2f6f-45e8-8da3-bfae70390334",
+      "name": "Audiocraft",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1700,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "content",
+              "value": "={{ $json.message.content.replaceAll('\"','').trim() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "69dd3b19-0bbe-49ec-b4b6-353e7f193d9c",
+      "name": "Set2",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        1460,
+        360
+      ]
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "functions.webenclave.com",
+            "user-agent": "Insomnia/2023.5.6",
+            "content-length": "88",
+            "accept": "*/*",
+            "content-type": "application/json",
+            "x-forwarded-for": "71.82.67.90",
+            "x-forwarded-host": "functions.webenclave.com",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "87d60f505549",
+            "x-real-ip": "71.82.67.90",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "url": "https://medium.com/@KimWitten/stop-trying-to-manage-your-time-a07b6e45cec8"
+          }
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "OpenAI": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "\"Robust and dynamic lofi hip hop beat with energetic drums, smooth jazzy chords, and playful synth melodies, encapsulating the innovative and futuristic essence of the AI app ATLAS. This track sets the perfect atmosphere for startups and venture capital firms seeking creative solutions and generating new business system materials. The catchy rhythm and uplifting harmonies reflect the momentum and drive behind these entrepreneurial endeavors. Get ready to embark on a musical journey that resonates with ambition and limitless possibilities.\""
+          },
+          "finish_reason": "stop"
+        }
+      }
+    ],
+    "Set1": [
+      {
+        "json": {
+          "success": true,
+          "out": "https://storageapi.webenclave.com/hackathon/40640268452784.wav"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "JsonLink": [
+      {
+        "json": {
+          "title": "Stop Trying to Manage Your Time. Do this instead",
+          "description": "Time management is not about time. Put your energy before your time, not the other way around. That's how to get more done (and feel good about it). Here's a list of strategies you can try now to become more energy-conscious.",
+          "images": [
+            "https://miro.medium.com/v2/resize:fit:1200/1*WB_UqAT-aDG0KONvvuM1Lg.png"
+          ],
+          "duration": 121,
+          "domain": "medium.com",
+          "url": "https://medium.com/@KimWitten/stop-trying-to-manage-your-time-a07b6e45cec8"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "JsonLink",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Set2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set": {
+      "main": [
+        [
+          {
+            "node": "S3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "S3": {
+      "main": [
+        [
+          {
+            "node": "Set1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JsonLink": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audiocraft": {
+      "main": [
+        [
+          {
+            "node": "Set",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set2": {
+      "main": [
+        [
+          {
+            "node": "Audiocraft",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "054947da-9b8f-47ff-b081-2c097f2102e4",
+  "id": "JtZ0vxRI5fwp8C63",
+  "meta": {
+    "instanceId": "c6595d1af64558f387ff52f97fe4a36d0569860f61bd602d73a4fe44b9bdad45"
+  },
+  "tags": []
+}
