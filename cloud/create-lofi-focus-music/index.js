@@ -1,12 +1,11 @@
 /*
 {
-    "openai_key": "string",
-    "clarifai_pat": "string",
-    "businessId": "string"
+    "title": "string",
+    "description": "string",
 }
 
-?   Database    ->  user
-?                       ->  Collections -> user_apikey
+?   Database    ->  lofi-focus
+?                       ->  Collections -> music_generation
 
 */
 
@@ -61,7 +60,7 @@ module.exports = async (req, res) => {
     eH("[Error] Payload was missing");
   }
 
-  const { openai_key, clarifai_token } = _request
+  const { title, description } = _request
   
 
 };
