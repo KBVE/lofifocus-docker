@@ -44,6 +44,9 @@ RUN poetry install
 COPY package.json .
 RUN yarn install
 
+# Adding Audiocraft
+RUN poetry run pip3 install -U audiocraft
+
 COPY . .
 
 EXPOSE 5000
