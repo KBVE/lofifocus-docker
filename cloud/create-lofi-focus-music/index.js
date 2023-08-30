@@ -15,13 +15,11 @@ const axios = require("axios");
 module.exports = async (req, res) => {
   /*    Core SDK */
   const client = new sdk.Client();
-  const database = new sdk.Databases(client);
-  const users = new sdk.Users(client);
 
   let _request = "";
 
-  const errorHandler = (__errorMessage, statusCode = 400) => {
-    res.json({ data: "error", message: __errorMessage }, statusCode);
+  const errorHandler = (__errorMessage) => {
+    res.json({ data: "error", message: __errorMessage }, 400);
   };
 
   const validHandler = (_data) => {
@@ -44,6 +42,10 @@ module.exports = async (req, res) => {
       .setSelfSigned(true);
   }
 
+  // SDK
+  //const database = new sdk.Databases(client);
+  //const users = new sdk.Users(client);
+
   if (req.payload) {
     try {
       _request = JSON.parse(req.payload);
@@ -54,5 +56,5 @@ module.exports = async (req, res) => {
     errorHandler("[Error] Payload was missing");
   }
 
-  const { title, description } = _request;
+  //const { title, description } = _request;
 };
