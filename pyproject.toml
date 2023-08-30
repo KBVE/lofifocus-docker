@@ -35,6 +35,7 @@ uvicorn = {extras = ["standard"], version = "^0.23.2"}
 gunicorn = "^21.2.0"
 chromadb = "0.4.7"
 clarifai-grpc = "^9.7.3"
+torch = ">=2.0"
 
 
 [tool.poetry.dev-dependencies]
