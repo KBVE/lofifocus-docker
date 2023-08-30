@@ -32,34 +32,34 @@ jobs:
         env:
           CI: true
 
-  cloudfunction:
-    needs: [install]
-    runs-on: ubuntu-latest
-    name: Deploy cloud functions to Appwrite
-    steps:
-      -   name: Checkout the code
-          uses: actions/checkout@v3
-      -   name: Install Appwrite CLI
-          shell: bash
-          working-directory: ./cloud/update-api-profile
-          run: curl -sL https://appwrite.io/cli/install.sh | bash
-      -   name: Setup Appwrite CLI
-          shell: bash
-          working-directory: ./cloud/update-api-profile
-          run: |
-            appwrite client \
-              --endpoint='https://ap.kbve.com/v1' \
-              --projectId='6436a6dc9a6b48db802f' \
-              --key='${{ secrets.APPWRITE_API }}'
-            appwrite -v
-            appwrite functions createDeployment \
-              --functionId='64ec2f906524e458c14b' \
-              --entrypoint='index.js' \
-              --code '.' \
-              --activate true
+#  cloudfunction:
+#    needs: [install]
+#    runs-on: ubuntu-latest
+#    name: Deploy cloud functions to Appwrite
+#    steps:
+#      -   name: Checkout the code
+#          uses: actions/checkout@v3
+#      -   name: Install Appwrite CLI
+#          shell: bash
+#          working-directory: ./cloud/update-api-profile
+#          run: curl -sL https://appwrite.io/cli/install.sh | bash
+#      -   name: Setup Appwrite CLI
+#          shell: bash
+#          working-directory: ./cloud/update-api-profile
+#          run: |
+#            appwrite client \
+#              --endpoint='https://ap.kbve.com/v1' \
+#              --projectId='6436a6dc9a6b48db802f' \
+#              --key='${{ secrets.APPWRITE_API }}'
+#            appwrite -v
+#            appwrite functions createDeployment \
+#              --functionId='64ec2f906524e458c14b' \
+#              --entrypoint='index.js' \
+#              --code '.' \
+#              --activate true
       
   publish:
-    needs: [cloudfunction]
+    needs: [install]
     runs-on: ubuntu-latest
     name: Publish image to Github Packages
     steps:
