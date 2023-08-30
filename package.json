@@ -1,0 +1,67 @@
+{
+    "name": "nodepy",
+    "version": "1.0.0",
+    "private": true,
+    "description": "KBVE NodePy",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "kbve",
+    "license": "MIT",
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.6.0",
+        "@astrojs/image": "^0.17.3",
+        "@astrojs/partytown": "^1.2.3",
+        "@astrojs/prefetch": "^0.3.0",
+        "@astrojs/sitemap": "^2.0.2",
+        "@astrojs/svelte": "^3.1.1",
+        "@astrojs/tailwind": "^4.0.0",
+        "@e2b/sdk": "^0.1.0",
+        "@nanostores/persistent": "^0.9.1",
+        "@nanostores/react": "^0.7.1",
+        "@tailwindcss/typography": "^0.5.9",
+        "@types/koa": "^2.13.8",
+        "@types/node": "^20.5.1",
+        "appwrite": "^11.0.1",
+        "astro": "^2.10.14",
+        "axios": "^0.26.1",
+        "dotenv": "^16.3.1",
+        "https-proxy-agent": "^7.0.0",
+        "koa": "^2.14.2",
+        "koa-bodyparser": "^4.4.0",
+        "koa-proxies": "^0.12.3",
+        "koa-router": "^12.0.0",
+        "koa-static": "^5.0.0",
+        "langchain": "^0.0.132",
+        "llamaindex": "^0.0.20",
+        "loadash": "^1.0.0",
+        "metaphor-node": "^1.0.20",
+        "nanostores": "^0.9.3",
+        "node-appwrite": "^9.0.0",
+        "nodemon": "^3.0.1",
+        "openai": "^4.0.1",
+        "path": "^0.12.7",
+        "pocketbase": "^0.15.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "svelte": "^4.2.0",
+        "tailwindcss": "^3.3.3"
+    },
+    "nodemonConfig": {
+        "watch": [
+            "*.*"
+        ],
+        "ext": "js,mjs,cjs,json,html,py",
+        "ignore": [
+            "*.test.ts"
+        ],
+        "delay": "3",
+        "execMap": {
+            "ts": "ts-node"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+[package]
+name = "rustpy"
+version = "0.0.1"
+authors = ["kbve"]
+license = "MIT/Apache-2.0"
+readme = "README.md"
+description = "An oxidized pie that heals you for 6+ HP and boosts all your stats by +9. Can be high alched for 420gp."
+repository = "https://github.com/kbve/nodepy"
+keywords = ["kbve", "put_ya_keywords_here"]
+edition = "2023"
+
+[dependencies]
+
