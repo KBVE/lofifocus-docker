@@ -20,26 +20,20 @@ module.exports = async (req, res) => {
 
   let _request = "";
 
-  /*    Helper Handler */
   const errorHandler = (__errorMessage, statusCode = 400) => {
-    //TODO Error Handler Grafana.
     res.json({ data: "error", message: __errorMessage }, statusCode);
   };
 
   const validHandler = (_data) => {
-    //TODO Valid Handler Grafana.
     res.json({ data: _data }, 200);
   };
-
-  const eH = errorHandler;
-  const vH = validHandler;
 
   if (
     !req.variables["APPWRITE_FUNCTION_ENDPOINT"] ||
     !req.variables["APPWRITE_FUNCTION_API_KEY"] ||
     !req.variables["APPWRITE_FUNCTION_PROJECT_ID"]
   ) {
-    eH(
+    errorHandler(
       "[Error] Environment variables are not set thus the function cannot use Appwrite SDK."
     );
   } else {
@@ -54,13 +48,11 @@ module.exports = async (req, res) => {
     try {
       _request = JSON.parse(req.payload);
     } catch (e) {
-      eH(`[Error] JSON Parsing Payload -> ${e}`);
+      errorHandler(`[Error] JSON Parsing Payload -> ${e}`);
     }
   } else {
-    eH("[Error] Payload was missing");
+    errorHandler("[Error] Payload was missing");
   }
 
-  const { title, description } = _request
-  
-
+  const { title, description } = _request;
 };

@@ -45,7 +45,7 @@
       <div class="text-left">
         <!-- Menu-->
         <button
-          class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-yellow-300 hover:animate-pulse"
+          class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-yellow-300 hover:animate-pulse"
           type="button"
           data-drawer-target="drawer-navigation"
           data-drawer-show="drawer-navigation"
@@ -86,7 +86,7 @@
         </button>
         <!-- Cloud Functions -->
         <button
-          class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-yellow-300 hover:animate-pulse"
+          class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-yellow-300 hover:animate-pulse"
           type="button"
           data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" >
           <svg
@@ -147,7 +147,7 @@
               href="#"
               class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white hover:bg-gray-700 group">
               <svg
-                class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-yellow-600 hover:animate-pulse"
+                class="w-5 h-5 text-gray-500 transition duration-75 text-gray-400 group-hover:text-yellow-600 hover:animate-pulse"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -165,7 +165,7 @@
               href="#"
               class="flex items-center p-2 text-gray-500 rounded-lg hover:text-white hover:bg-gray-700 group">
               <svg
-                class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-yellow-600 hover:animate-pulse"
+                class="w-5 h-5 text-gray-500 transition duration-75 text-gray-400 group-hover:text-yellow-600 hover:animate-pulse"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -185,8 +185,77 @@
       </div>
     </div>
 
-    <main>
+    <main class="">
 
+
+      <!-- Hero - START -->
+      <section class="bg-gray-800 text-gray-100">
+        <div class="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+          <div class="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="" class="object-contain rounded-3xl h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+          </div>
+          <div class="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+            <h1 class="text-5xl font-bold leadi sm:text-6xl">Lofi
+              <span class="text-yellow-400">Focus</span> Ai Music Generator
+            </h1>
+            <p class="mt-6 mb-8 text-lg sm:mb-12">A chrome extension that generates music based upon the webpage you are on
+              <br class="hidden md:inline lg:hidden">Use our basic form below to generate music!
+            </p>
+            <div class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+              <a rel="noopener noreferrer" href="#" class="px-8 py-3 text-lg font-semibold rounded bg-yellow-400 text-gray-900">Get Extension</a>
+              <a rel="noopener noreferrer" href="#" class="px-8 py-3 text-lg font-semibold border rounded border-gray-100">Test Form</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Hero - END -->
+
+      <div class="w-full bg-gray-500" style="background-image: url('https://images.unsplash.com/photo-1605731414532-6b26976cc153?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); background-position: center center; background-blend-mode: multiply; background-size: cover;">
+        <div class="container flex flex-col flex-wrap content-center justify-center p-4 py-20 mx-auto md:p-10">
+          <h1 class="text-5xl antialiased font-semibold leadi text-center text-gray-100">Get Our Updates</h1>
+          <p class="pt-2 pb-8 text-xl antialiased text-center text-gray-100">Find out about events and other news</p>
+          <div class="flex flex-row">
+            <input type="text" placeholder="example@email.com" class="w-3/5 p-3 rounded-l-lg sm:w-2/3">
+            <button type="button" class="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-yellow-400 text-gray-900">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Footer - START -->
+
+      <footer class="px-4 py-8 bg-gray-800 text-gray-400">
+        <div class="container flex flex-wrap items-center justify-center mx-auto space-y-4 sm:justify-between sm:space-y-0">
+          <div class="flex flex-row pr-3 space-x-4 sm:space-x-8">
+            <div class="flex items-center justify-center flex-shrink-0 w-12 h-12 rounded-full bg-yellow-400">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" class="w-5 h-5 rounded-full text-gray-900">
+                <path d="M18.266 26.068l7.839-7.854 4.469 4.479c1.859 1.859 1.859 4.875 0 6.734l-1.104 1.104c-1.859 1.865-4.875 1.865-6.734 0zM30.563 2.531l-1.109-1.104c-1.859-1.859-4.875-1.859-6.734 0l-6.719 6.734-6.734-6.734c-1.859-1.859-4.875-1.859-6.734 0l-1.104 1.104c-1.859 1.859-1.859 4.875 0 6.734l6.734 6.734-6.734 6.734c-1.859 1.859-1.859 4.875 0 6.734l1.104 1.104c1.859 1.859 4.875 1.859 6.734 0l21.307-21.307c1.859-1.859 1.859-4.875 0-6.734z"></path>
+              </svg>
+            </div>
+            <ul class="flex flex-wrap items-center space-x-4 sm:space-x-8">
+              <li>
+                <a rel="noopener noreferrer" href="#">Terms of Use</a>
+              </li>
+              <li>
+                <a rel="noopener noreferrer" href="#">Privacy</a>
+              </li>
+            </ul>
+          </div>
+          <ul class="flex flex-wrap pl-3 space-x-4 sm:space-x-8">
+            <li>
+              <a rel="noopener noreferrer" href="#">Instagram</a>
+            </li>
+            <li>
+              <a rel="noopener noreferrer" href="#">Facebook</a>
+            </li>
+            <li>
+              <a rel="noopener noreferrer" href="#">Twitter</a>
+            </li>
+          </ul>
+        </div>
+      </footer>
+
+      <!-- Footer - END -->
 
     </main>
 
@@ -281,7 +350,7 @@
                 class="w-full text-white bg-yellow-600 hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 Login to your account
               </button>
-              <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+              <div class="text-sm font-medium text-gray-500 text-gray-300">
                 Not registeyellow?
                 <a
                   href="#"
