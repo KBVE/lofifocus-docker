@@ -23,12 +23,9 @@ services:
       timeout: 5s
       retries: 5
   web: 
-    build: .
-    command: pm2-runtime ecosystem.config.js
+    image: ghcr.io/kbve/lofifocus-docker:main
     volumes: 
       - .:/app
       - /app/node_modules
     ports: 
-      - "80:5000"
-    expose:
-      - "80"
+      - "5000"

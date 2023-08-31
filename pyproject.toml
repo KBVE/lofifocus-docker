@@ -36,6 +36,7 @@ gunicorn = "^21.2.0"
 chromadb = "0.4.7"
 clarifai-grpc = "^9.7.3"
 torch = ">=2.0"
+flask = "^2.3.3"
 
 
 [tool.poetry.dev-dependencies]

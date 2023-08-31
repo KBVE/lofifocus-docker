@@ -48,13 +48,14 @@ https://storageapi.webenclave.com/hackathon/1693446441558.wav
 - [Contributions](#contributions)
 - [Citations](#citations)
 
-
 ## Overview
+
 Lofi Focus is a chrome extension that automatically generates lo-fi music when browsing articles, blogs, and other sites. The ambient, chilled-out sounds create an enjoyable atmosphere to help users focus while reading.
 
 Lofi music, as explored in Justin Wang's study "Lofi hip-hop radio: Beats to relax/study to" offers a therapeutic escape for its listeners. The genre serves as a coping mechanism for stress and anxiety, with research suggesting that such music impacts the autonomic nervous system, potentially reducing subconscious stress levels (wang2020lofi, Page 5). Additionally, lofi provides solace during personal losses, with its comforting visuals and tones resonating with the emotions of its audience (wang2020lofi, Page 12). Many also use lofi as calming background music for various tasks, from studying to relaxation (wang2020lofi, Page 12). Furthermore, its nostalgic connection to late '90s and early 2000s anime offers a unique blend of soothing genres, providing listeners with a familiar yet calming auditory experience (wang2020lofi, Page 4).
 
 ## Benefits of LoFi Music
+
 - Improves focus and concentration - The chill, repetitive beats help tune out distractions and keep you in a flow state. The lack of jarring changes also avoids breaking focus.
 - Reduces stress and anxiety - The ambient sounds lower heart rate and have a calming effect on the mind and body.
 - Enhances productivity - By helping you focus and relax, lo-fi enables you to work and study more efficiently for longer periods.
@@ -65,13 +66,16 @@ Lofi music, as explored in Justin Wang's study "Lofi hip-hop radio: Beats to rel
 - Fosters pleasant memories and nostalgia - For many, it evokes nostalgia from times spent studying or relaxing to music.
 
 ## Audiocraft to the Rescue
+
 With Audiocraft we can:
+
 - Create fully AI-generated LoFi tracks tailored to specific use-cases
 - Produce High-quality audio
 - Create endless unique music
 - Train new models tailored to LoFi
 
 ## Why Download Our Chrome Extension
+
 - Improve focus and concentration when reading
 - Make reading more enjoyable and relaxing
 - Boost productivity
@@ -82,13 +86,14 @@ With Audiocraft we can:
 - Nostalgia
 
 ## How to Install Our Chrome Extension
-1. Download the extension files here: 
+
+1. Download the extension files here:
    - You will need to download the files that make up the chrome extension, usually as a zip folder from the developer. This includes the manifest.json file, HTML/CSS/JS assets, and any images or resources.
 2. Extract the zip folder
 3. Unzip the folder containing the extension source files to a location on your computer. Avoid folders that require administrator access.
-4. Open Google Chrome and navigate to chrome://extensions in the address bar. 
+4. Open Google Chrome and navigate to chrome://extensions in the address bar.
 5. Enable Developer Mode via the toggle in the top right.
-Load the extension
+   Load the extension
 6. Click the "Load Unpacked" button and select the folder containing your extracted extension files. This will install the extension in developer mode.
 7. For easy access, click the puzzle icon for your extensions and pin your newly installed extension. This will make it appear as an icon in your browser toolbar.
 
@@ -126,6 +131,7 @@ After training finished, we saved the best performing model checkpoint. We now h
 - Give users more options to customize their browsing experience
 
 ## Technologies Used
+
 - Audiocraft Music Generation
 - Audiocraft Multi-Band Diffusion
 - Audiocraft Audio Write
@@ -184,23 +190,27 @@ After training finished, we saved the best performing model checkpoint. We now h
 # API Documentation
 
 ## Flask API
+
 POST - `https://.../generate_music`
+
 ```json
 {
-    "model_name": "facebook/musicgen-small",
-    "duration": 15,
-    "prompt": "LoFi Hip-Hop",
-    "strategy": "loudness",
-    "sampling": true,
-    "top_k": 0,
-    "top_p": 0.9,
-    "temperature": 0.9,
-	  "use_diffusion": false
+  "model_name": "facebook/musicgen-small",
+  "duration": 15,
+  "prompt": "LoFi Hip-Hop",
+  "strategy": "loudness",
+  "sampling": true,
+  "top_k": 0,
+  "top_p": 0.9,
+  "temperature": 0.9,
+  "use_diffusion": false
 }
 ```
 
 ## N8N API
+
 POST - `https://.../generate-music`
+
 ```json
 {
 	"url": "https://medium.com/@KimWitten/stop-trying-to-manage-your-time-a07b6e45cec8",
@@ -211,6 +221,7 @@ POST - `https://.../generate-music`
 ```
 
 # Contributions
+
 https://github.com/h0lybyte - Docker, Portainer, Appwrite
 
 https://github.com/BChip - Audiocraft, Flask API, N8N Workflow, Eleven
