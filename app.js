@@ -10,7 +10,7 @@ const router = require("./router");
 const serve = require("koa-static");
 const _v = require("./v");
 const App = new Koa();
-const port = 9000;
+const port = 5000;
 
 const staticDirPath = path.join(__dirname, "public");
 
