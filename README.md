@@ -29,10 +29,12 @@ https://storageapi.webenclave.com/hackathon/1693446342975.wav
 https://storageapi.webenclave.com/hackathon/1693446441558.wav
 
 ---
-
-# Video
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/szN4w4cd02s?si=cd0fz-zlLhpL_sYR/0.jpg)](https://www.youtube.com/watch?v=szN4w4cd02s?si=cd0fz-zlLhpL_sYR)
+# Video 
+Youtube video: https://www.youtube.com/embed/szN4w4cd02s?si=cd0fz-zlLhpL_sYR
+<iframe width="560" height="315" src="https://www.youtube.com/embed/szN4w4cd02s?si=cd0fz-zlLhpL_sYR"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
 
 ---
 
