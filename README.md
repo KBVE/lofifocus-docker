@@ -30,8 +30,15 @@ https://storageapi.webenclave.com/hackathon/1693446441558.wav
 
 ---
 
+# Video
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/szN4w4cd02s?si=cd0fz-zlLhpL_sYR/0.jpg)](https://www.youtube.com/watch?v=szN4w4cd02s?si=cd0fz-zlLhpL_sYR)
+
+---
+
 # Lofi Focus
 
+- [Video](#video)
 - [Lofi Focus](#lofi-focus)
   - [Overview](#overview)
   - [Benefits of LoFi Music](#benefits-of-lofi-music)
