@@ -1,10 +1,34 @@
-# Lofi Focus
-
 <img src="https://cdn.discordapp.com/attachments/1047967719745667123/1146199674655608902/image.png" data-canonical-src="https://cdn.discordapp.com/attachments/1047967719745667123/1146199674655608902/image.png" width="200" />
+
+---
 
 Demo: https://lofifocus.kbve.com/#
 
 Chrome Extension Repo: https://github.com/KBVE/lofifocus-chrome-extension
+
+Download Chrome Extension: https://github.com/KBVE/lofifocus-chrome-extension/releases/latest
+
+Custom Trained LoFi Model: https://storageapi.webenclave.com/hackathon/lm_final.pt
+
+Songs Generated using facebook/musicgen-small:
+
+https://storageapi.webenclave.com/hackathon/77896957728656.wav
+
+https://storageapi.webenclave.com/hackathon/89748590695969.wav
+
+https://storageapi.webenclave.com/hackathon/32174022274771.wav
+
+Custom Model with Multi-Band Stable Diffusion:
+
+https://storageapi.webenclave.com/hackathon/1693443008707.wav
+
+https://storageapi.webenclave.com/hackathon/1693446342975.wav
+
+https://storageapi.webenclave.com/hackathon/1693446441558.wav
+
+---
+
+# Lofi Focus
 
 - [Lofi Focus](#lofi-focus)
   - [Overview](#overview)
@@ -14,8 +38,8 @@ Chrome Extension Repo: https://github.com/KBVE/lofifocus-chrome-extension
   - [How to Install Our Chrome Extension](#how-to-install-our-chrome-extension)
   - [Features](#features)
   - [Implementation](#implementation)
+  - [Our Custom Model](#our-custom-model)
   - [Goals](#goals)
-  - [Stretch Goals](#stretch-goals)
   - [Technologies Used](#technologies-used)
   - [High Level Design](#high-level-design)
 - [API Documentation](#api-documentation)
@@ -81,16 +105,25 @@ Load the extension
 - Leverages AudioCraft's MusicGen AI model to generate the lofi tracks
 - Polished UI allows easy control over the music generation
 
+## Our Custom Model
+We collected a dataset of original non-copyright lofi music. This gave us access to a large corpus of high-quality training data without any copyright issues.
+
+We split the lofi songs into 30 second audio clips and paired each clip with a text prompt describing the mood, instruments, tempo and other qualities of that segment. Examples include "slow chill hip hop beat with mellow piano and vinyl crackle" and "upbeat lofi with energetic drums and warm bassline".
+
+We formatted this dataset into the required .wav and .txt file pairs that musicgen_trainer expects. The text prompts would guide the model to learn the nuances of lofi hip hop.
+
+We then ran musicgen_trainer on this dataset, configuring it to use the small architecture for optimization purposes. We trained for 100 epochs with a learning rate of 1e-5 and batch size of 4.
+
+During training, musicgen_trainer used the audio/text pairs to fine-tune MusicGen on lofi music. The pre-trained weights were specialized to generate high quality lofi given descriptive prompts.
+
+After training finished, we saved the best performing model checkpoint. We now have a MusicGen variant skilled at generating original lofi tunes according to textual descriptions.
+
 ## Goals
 
 - Help people focus and be more productive when reading on the web
 - Provide an ambient audio environment that blocks distracting sounds
 - Make reading more enjoyable and relaxed through chill tunes
 - Give users more options to customize their browsing experience
-
-## Stretch Goals
-- Train new model via https://github.com/chavinlo/musicgen_trainer by creating 30 second .wav files and corresponding .txt files with prompts from https://www.youtube.com/watch?v=BEXL80LS0-I
-- User can favorite/save LoFi track URLs to browser storage to play later
 
 ## Technologies Used
 - Audiocraft Music Generation
@@ -170,7 +203,10 @@ POST - `https://.../generate_music`
 POST - `https://.../generate-music`
 ```json
 {
-	"url": "https://medium.com/@KimWitten/stop-trying-to-manage-your-time-a07b6e45cec8"
+	"url": "https://medium.com/@KimWitten/stop-trying-to-manage-your-time-a07b6e45cec8",
+  "use_custom": true, /* optional */
+	"use_diffusion": true, /* optional */
+  "duration": 15 /* optional */
 }
 ```
 

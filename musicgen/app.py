@@ -10,6 +10,7 @@
     "top_p": 0.9,
     "temperature": 0.9
     "use_diffusion": true
+    "use_custom": false
 }
 """
 
@@ -20,6 +21,7 @@ from audiocraft.data.audio import audio_write
 from audiocraft.models import MultiBandDiffusion
 import uuid
 import io
+import torch
 
 app = Flask(__name__)
 
@@ -36,6 +38,7 @@ def generate_music():
     top_p = request.json.get("top_p")
     temperature = request.json.get("temperature")
     use_diffusion = request.json.get("use_diffusion")
+    use_custom = request.json.get("use_custom")
 
     # Check if the model name is valid
     if model_name not in [
@@ -80,6 +83,9 @@ def generate_music():
     if not isinstance(use_diffusion, bool):
         abort(400, "Invalid use_diffusion (true, false)")
 
+    if not isinstance(use_custom, bool):
+        abort(400, "Invalid use_custom (true, false)")
+
     # Print the request body
     print(request.json)
 
@@ -88,6 +94,8 @@ def generate_music():
 
     # Load the specified model and set the generation parameters
     model = musicgen.MusicGen.get_pretrained(model_name, device="cuda")
+    if use_custom:
+        model.lm.load_state_dict(torch.load('models/lm_final.pt'))
     model.set_generation_params(
         duration=duration,
         use_sampling=sampling,
