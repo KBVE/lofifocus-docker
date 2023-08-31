@@ -20,7 +20,7 @@ https://storageapi.webenclave.com/hackathon/89748590695969.wav
 
 https://storageapi.webenclave.com/hackathon/32174022274771.wav
 
-Custom Model with Multi-Band Stable Diffusion:
+Custom Model with Multi-Band Diffusion:
 
 https://storageapi.webenclave.com/hackathon/1693443008707.wav
 
