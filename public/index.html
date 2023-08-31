@@ -1,161 +1,117 @@
 <!DOCTYPE html>
 <html lang="en" class="motion-safe:scroll-smooth" data-theme="dark">
-  <head>
-    <title>Lofi Focus!</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Tailwind-->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Flowbite-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
-    <!-- React -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
-      integrity="sha512-8Q6Y9XnTbOE+JNvjBQwJ2H8S+UV4uA6hiRykhdtIyDYZ2TprdNmWOUaKdGzOhyr4dCyk287OejbPvwl7lrfqrQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"></script>
 
-    <!-- Appwrite-->
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.1/dist/iife/sdk.min.js"></script>
-    <!-- Toastify -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-    <!-- Google Font - VT323 -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
-      rel="stylesheet" />
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png" />
+<head>
+  <title>Lofi Focus!</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind-->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Flowbite-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+  <!-- React -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
+    integrity="sha512-8Q6Y9XnTbOE+JNvjBQwJ2H8S+UV4uA6hiRykhdtIyDYZ2TprdNmWOUaKdGzOhyr4dCyk287OejbPvwl7lrfqrQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              clifford: "#da373d",
-            },
+  <!-- Appwrite-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@11.0.1/dist/iife/sdk.min.js"></script>
+  <!-- Toastify -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <!-- Google Font - VT323 -->
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: "#da373d",
           },
         },
-      };
-    </script>
-  </head>
+      },
+    };
+  </script>
+</head>
 
-  <body
-    class="text-base font-['VT323'] bg-zinc-900 text-default selection:bg-[#4ca0d5] selection:text-black">
-    <nav class="bg-zinc-900 px-4 py-2.5 fixed left-0 right-0 top-0 z-30">
-      <!-- drawer init and show -->
-      <div class="text-center">
-        <!-- Menu-->
-        <button
-          class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-cyan-300 hover:animate-pulse"
-          type="button"
-          data-drawer-target="drawer-navigation"
-          data-drawer-show="drawer-navigation"
-          aria-controls="drawer-navigation">
-          <svg
-            fill=""
-            class="w-8"
-            version="1.1"
-            id="Capa_1"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 384.97 384.97"
-            xml:space="preserve">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <g>
-                <g id="Settings">
-                  <path
-                    d="M12.03,84.212h360.909c6.641,0,12.03-5.39,12.03-12.03c0-6.641-5.39-12.03-12.03-12.03H12.03 C5.39,60.152,0,65.541,0,72.182C0,78.823,5.39,84.212,12.03,84.212z"></path>
-                  <path
-                    d="M372.939,300.758H12.03c-6.641,0-12.03,5.39-12.03,12.03c0,6.641,5.39,12.03,12.03,12.03h360.909 c6.641,0,12.03-5.39,12.03-12.03C384.97,306.147,379.58,300.758,372.939,300.758z"></path>
-                  <path
-                    d="M336.848,144.364c-22.4,0-41.059,15.375-46.425,36.091H12.03c-6.641,0-12.03,5.39-12.03,12.03s5.39,12.03,12.03,12.03 h278.393c5.366,20.716,24.025,36.091,46.425,36.091c26.575,0,48.121-21.546,48.121-48.121S363.423,144.364,336.848,144.364z M336.848,216.545c-13.293,0-24.061-10.779-24.061-24.061c0-13.281,10.767-24.061,24.061-24.061s24.061,10.767,24.061,24.061 C360.909,205.766,350.142,216.545,336.848,216.545z"></path>
-                </g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-                <g></g>
-              </g>
-            </g>
-          </svg>
-        </button>
-        <!-- Cloud Functions -->
-        <button
-          class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-cyan-300 hover:animate-pulse"
-          type="button"
-          data-modal-target="authentication-modal"
-          data-modal-toggle="authentication-modal">
-          <svg
-            viewBox="0 0 24 24"
-            fill=""
-            class="w-8"
-            xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path
-                d="M13 11L10 16H15L12 21M6 16.4438C4.22194 15.5683 3 13.7502 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 14.0582 20.206 15.4339 19 16.2417"
-                stroke="#000000"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"></path>
-            </g>
-          </svg>
-        </button>
-        <!-- Privacy Start -->
-        <button
-          class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-cyan-300 hover:animate-pulse"
-          type="button"
-          data-modal-target="authentication-modal"
-          data-modal-toggle="authentication-modal">
-          <svg
-            class="w-8"
-            version="1.1"
-            id="_x32_"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="0 0 512 512"
-            xml:space="preserve"
-            fill="#000000">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g
-              id="SVGRepo_tracerCarrier"
-              stroke-linecap="round"
-              stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <style type="text/css">
-                .st0 {
-                  fill: #000000;
-                }
-              </style>
-              <g>
-                <path
-                  class="st0"
-                  d="M510.831,167.648c-2.954-20.666-2.954-35.432-14.767-26.572c-11.81,8.86-84.65,27.247-162.402,35.433 c-36.479,3.844-61.048,14.564-77.663,27.262c-16.616-12.697-41.18-23.418-77.663-27.262 c-77.752-8.186-150.594-26.573-162.403-35.433C4.12,132.216,4.12,146.982,1.17,167.648c-5.43,38.006,5.902,144.691,79.724,183.076 c77.892,40.502,132.874,17.712,159.45,2.954c5.852-3.256,11.003-6.581,15.654-9.891c4.651,3.31,9.801,6.635,15.654,9.891 c26.577,14.758,81.562,37.548,159.454-2.954C504.924,312.339,516.257,205.654,510.831,167.648z M159.24,306.471 c-33.266-2.566-66.535-35.836-66.535-63.981c0,0,51.184,2.557,74.213,5.116c23.03,2.558,40.948,20.472,40.948,30.711 C207.865,288.549,192.509,309.021,159.24,306.471z M352.757,306.471c-33.266,2.55-48.622-17.922-48.622-28.154 c0-10.239,17.914-28.154,40.944-30.711c23.03-2.558,74.213-5.116,74.213-5.116C419.292,270.635,386.027,303.905,352.757,306.471z"></path>
-              </g>
-            </g>
-          </svg>
-        </button>
-      </div>
-    </nav>
+<body class="text-base font-['VT323'] bg-zinc-900 text-default selection:bg-[#4ca0d5] selection:text-black">
+  <!-- <nav class="bg-zinc-900 px-4 py-2.5 fixed left-0 right-0 top-0 z-30">
 
-    <!-- drawer component -->
-    <div
+  <button
+    class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-cyan-300 hover:animate-pulse"
+    type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation"
+    aria-controls="drawer-navigation">
+    <svg fill="" class="w-8" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 384.97 384.97" xml:space="preserve">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <g>
+          <g id="Settings">
+            <path
+              d="M12.03,84.212h360.909c6.641,0,12.03-5.39,12.03-12.03c0-6.641-5.39-12.03-12.03-12.03H12.03 C5.39,60.152,0,65.541,0,72.182C0,78.823,5.39,84.212,12.03,84.212z">
+            </path>
+            <path
+              d="M372.939,300.758H12.03c-6.641,0-12.03,5.39-12.03,12.03c0,6.641,5.39,12.03,12.03,12.03h360.909 c6.641,0,12.03-5.39,12.03-12.03C384.97,306.147,379.58,300.758,372.939,300.758z">
+            </path>
+            <path
+              d="M336.848,144.364c-22.4,0-41.059,15.375-46.425,36.091H12.03c-6.641,0-12.03,5.39-12.03,12.03s5.39,12.03,12.03,12.03 h278.393c5.366,20.716,24.025,36.091,46.425,36.091c26.575,0,48.121-21.546,48.121-48.121S363.423,144.364,336.848,144.364z M336.848,216.545c-13.293,0-24.061-10.779-24.061-24.061c0-13.281,10.767-24.061,24.061-24.061s24.061,10.767,24.061,24.061 C360.909,205.766,350.142,216.545,336.848,216.545z">
+            </path>
+          </g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+          <g></g>
+        </g>
+      </g>
+    </svg>
+  </button>
+
+  <button
+    class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-cyan-300 hover:animate-pulse"
+    type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">
+    <svg viewBox="0 0 24 24" fill="" class="w-8" xmlns="http://www.w3.org/2000/svg">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <path
+          d="M13 11L10 16H15L12 21M6 16.4438C4.22194 15.5683 3 13.7502 3 11.6493C3 9.20008 4.8 6.9375 7.5 6.5C8.34694 4.48637 10.3514 3 12.6893 3C15.684 3 18.1317 5.32251 18.3 8.25C19.8893 8.94488 21 10.6503 21 12.4969C21 14.0582 20.206 15.4339 19 16.2417"
+          stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </g>
+    </svg>
+  </button>
+
+  <button
+    class="text-white bg-cyan-500 hover:bg-cyan-600 focus:ring-4 focus:ring-cyan-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none fill-white hover:fill-cyan-300 hover:animate-pulse"
+    type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">
+    <svg class="w-8" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <style type="text/css">
+          .st0 {
+            fill: #000000;
+          }
+        </style>
+        <g>
+          <path class="st0"
+            d="M510.831,167.648c-2.954-20.666-2.954-35.432-14.767-26.572c-11.81,8.86-84.65,27.247-162.402,35.433 c-36.479,3.844-61.048,14.564-77.663,27.262c-16.616-12.697-41.18-23.418-77.663-27.262 c-77.752-8.186-150.594-26.573-162.403-35.433C4.12,132.216,4.12,146.982,1.17,167.648c-5.43,38.006,5.902,144.691,79.724,183.076 c77.892,40.502,132.874,17.712,159.45,2.954c5.852-3.256,11.003-6.581,15.654-9.891c4.651,3.31,9.801,6.635,15.654,9.891 c26.577,14.758,81.562,37.548,159.454-2.954C504.924,312.339,516.257,205.654,510.831,167.648z M159.24,306.471 c-33.266-2.566-66.535-35.836-66.535-63.981c0,0,51.184,2.557,74.213,5.116c23.03,2.558,40.948,20.472,40.948,30.711 C207.865,288.549,192.509,309.021,159.24,306.471z M352.757,306.471c-33.266,2.55-48.622-17.922-48.622-28.154 c0-10.239,17.914-28.154,40.944-30.711c23.03-2.558,74.213-5.116,74.213-5.116C419.292,270.635,386.027,303.905,352.757,306.471z">
+          </path>
+        </g>
+      </g>
+    </svg>
+  </button>
+  </div>
+  </nav>-->
+
+  <!-- drawer component -->
+  <!--<div
       id="drawer-navigation"
       class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-gray-800"
       tabindex="-1"
@@ -225,373 +181,301 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div>-->
 
-    <main class="">
-      <!-- Our Blue Color: #130146 -->
+  <main class="">
+    <!-- Our Blue Color: #130146 -->
 
-      <!-- Hero - START -->
-      <section class="bg-gray-800 text-gray-100 py-16">
-        <div
-          class="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+    <!-- Hero - START -->
+    <section class="bg-gray-800 text-gray-100 py-16">
+      <div class="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+        <div class="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+          <!-- <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="" class="object-contain rounded-3xl h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"> -->
+          <video autoplay muted loop class="bg-[#130146] border-[#130146] border-4">
+            <source src="assets/preview.mp4" />
+          </video>
+        </div>
+        <div class="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+          <h1 class="text-5xl font-bold leadi sm:text-6xl">
+            Lofi <span class="text-[#4ca0d5]">Focus</span> Ai Music Generator
+          </h1>
+          <p class="mt-6 mb-8 text-lg sm:mb-12">
+            A chrome extension that generates music based upon the webpage you
+            are on <br class="hidden md:inline lg:hidden" />Use our basic form
+            below to generate music!
+          </p>
           <div
-            class="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 bg-[#130146]">
-            <!-- <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="" class="object-contain rounded-3xl h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"> -->
-            <video autoplay muted loop>
-              <source src="assets/preview.mp4" />
-            </video>
-          </div>
-          <div
-            class="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-            <h1 class="text-5xl font-bold leadi sm:text-6xl">
-              Lofi <span class="text-[#4ca0d5]">Focus</span> Ai Music Generator
-            </h1>
-            <p class="mt-6 mb-8 text-lg sm:mb-12">
-              A chrome extension that generates music based upon the webpage you
-              are on <br class="hidden md:inline lg:hidden" />Use our basic form
-              below to generate music!
-            </p>
-            <div
-              class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                data-modal-target="chrome-extension-modal"
-                data-modal-toggle="chrome-extension-modal"
-                class="px-8 py-3 text-lg font-semibold rounded bg-[#4ca0d5] text-gray-200"
-                >Get Extension</a
-              >
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                class="px-8 py-3 text-lg font-semibold border rounded border-gray-100"
-                data-modal-target="test-form-modal"
-                data-modal-toggle="test-form-modal"
-                >Test Form</a
-              >
-            </div>
+            class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+            <a rel="noopener noreferrer" href="#" data-modal-target="chrome-extension-modal"
+              data-modal-toggle="chrome-extension-modal"
+              class="px-8 py-3 text-lg font-semibold rounded bg-[#4ca0d5] text-gray-200">
+              <div class="flex flex-row items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" class="fill-gray-200"
+                  viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M0 256C0 209.4 12.47 165.6 34.27 127.1L144.1 318.3C166 357.5 207.9 384 256 384C270.3 384 283.1 381.7 296.8 377.4L220.5 509.6C95.9 492.3 0 385.3 0 256zM365.1 321.6C377.4 302.4 384 279.1 384 256C384 217.8 367.2 183.5 340.7 160H493.4C505.4 189.6 512 222.1 512 256C512 397.4 397.4 511.1 256 512L365.1 321.6zM477.8 128H256C193.1 128 142.3 172.1 130.5 230.7L54.19 98.47C101 38.53 174 0 256 0C350.8 0 433.5 51.48 477.8 128V128zM168 256C168 207.4 207.4 168 256 168C304.6 168 344 207.4 344 256C344 304.6 304.6 344 256 344C207.4 344 168 304.6 168 256z" />
+                </svg>
+                <p class="text-xl antialiased text-center ">Get Extension</p>
+              </div>
+            </a>
+            <a rel="noopener noreferrer" href="https://github.com/KBVE/lofifocus-docker" target="_blank"
+              class="px-8 py-3 text-lg font-semibold border rounded border-gray-100">Github Read Me</a>
           </div>
         </div>
-      </section>
-      <!-- Hero - END -->
 
-      <div
-        class="w-full bg-gray-500"
-        style="
+      </div>
+    </section>
+    <!-- Hero - END -->
+
+    <!--<div class="w-full bg-gray-500" style="
           background-image: url('https://images.unsplash.com/photo-1605731414532-6b26976cc153?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
           background-position: center center;
           background-blend-mode: multiply;
           background-size: cover;
-        ">
-        <div
-          class="container flex flex-col flex-wrap content-center justify-center p-4 py-20 mx-auto md:p-10">
-          <h1
-            class="text-5xl antialiased font-semibold leadi text-center text-gray-100">
-            Get Our Updates
-          </h1>
-          <p class="pt-2 pb-8 text-xl antialiased text-center text-gray-100">
-            Find out about events and other news
-          </p>
-          <div class="flex flex-row">
-            <input
-              type="text"
-              placeholder="example@email.com"
-              class="w-3/5 p-3 rounded-l-lg sm:w-2/3" />
-            <button
-              type="button"
-              class="w-2/5 p-3 font-semibold rounded-r-lg sm:w-1/3 bg-[#130146] text-gray-200">
-              Subscribe
+        ">-->
+    <div class="container flex flex-col flex-wrap content-center justify-center p-4 py-20 mx-auto md:p-10 gap-4">
+
+      <div class="flex flex-col">
+        <p class="pt-2 pb-8 text-xl antialiased text-center text-gray-100">
+          AI Voice Generation via ElevenLabs:</p>
+        <div class="flex flex-col justify-center items-center">
+          <audio controls>
+            <source
+              src="https://storageapi.webenclave.com/hackathon/ElevenLabs_2023-08-29T22_11_24_Charlotte_pre_s50_sb75_b_m1.mp3" />
+          </audio>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <p class="pt-2 pb-8 text-xl antialiased text-center text-gray-100">
+          LoFi Generated using facebook/musicgen-small:
+        </p>
+
+        <div class="flex md:flex-row gap-2 flex-col items-center">
+          <audio controls>
+            <source src="https://storageapi.webenclave.com/hackathon/77896957728656.wav" />
+          </audio>
+
+          <audio controls>
+            <source src="https://storageapi.webenclave.com/hackathon/89748590695969.wav" />
+          </audio>
+
+          <audio controls>
+            <source src="https://storageapi.webenclave.com/hackathon/32174022274771.wav" />
+          </audio>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <p class="pt-2 pb-8 text-xl antialiased text-center text-gray-100">
+          Custom LoFi Model with Multi-Band Diffusion (Learn More: <a
+            href="https://github.com/KBVE/lofifocus-docker#our-custom-model" target="_blank" rel="noopener noreferrer"
+            class="text-[#4ca0d5]">Here</a>):
+        </p>
+
+        <div class="flex md:flex-row gap-2 flex-col items-center">
+          <audio controls>
+            <source src="https://storageapi.webenclave.com/hackathon/1693443008707.wav" />
+          </audio>
+
+          <audio controls>
+            <source src="https://storageapi.webenclave.com/hackathon/1693446342975.wav" />
+          </audio>
+
+          <audio controls>
+            <source src="https://storageapi.webenclave.com/hackathon/1693446441558.wav" />
+          </audio>
+        </div>
+      </div>
+
+
+    </div>
+
+
+    <!-- Footer - START -->
+    <!-- Footer - END -->
+  </main>
+
+  <!-- Modals - START -->
+  <!-- Main modal -->
+
+  <!-- Auth Modal - START -->
+  <div id="authentication-modal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-md max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-gray-700 rounded-lg shadow">
+        <button type="button"
+          class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-cyan-700 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+          data-modal-hide="authentication-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+        <div class="px-6 py-6 lg:px-8">
+          <h3 class="mb-4 text-xl font-medium text-white">
+            Sign in to our Platform!
+          </h3>
+          <form class="space-y-6" action="#">
+            <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
+              <input type="email" name="email" id="email"
+                class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
+                placeholder="name@company.com" required />
+            </div>
+            <div>
+              <label for="password" class="block mb-2 text-sm font-medium text-white">Your password</label>
+              <input type="password" name="password" id="password" placeholder="••••••••"
+                class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
+                required />
+            </div>
+            <div class="flex justify-between">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="remember" type="checkbox" value=""
+                    class="w-4 h-4 border border-gray-500 rounded bg-gray-600 focus:ring-3 focus:ring-offset-gray-800 ring-offset-gray-800 accent-cyan-500"
+                    required />
+                </div>
+                <label for="remember" class="ml-2 text-sm font-medium text-gray-300">Remember me</label>
+              </div>
+              <a href="#" class="text-sm text-cyan-500 hover:underline">Lost Password?</a>
+            </div>
+            <button type="submit"
+              class="w-full text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+              Login to your account
             </button>
-          </div>
+            <div class="text-sm font-medium text-gray-500 text-gray-300">
+              Not registed?
+              <a href="#" class="text-cyan-500 hover:underline">Create account</a>
+            </div>
+          </form>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- Auth Model - END -->
 
-      <!-- Footer - START -->
+  <!-- Chrome Extension Modal - START -->
+  <div id="chrome-extension-modal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-md max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-gray-700 rounded-lg shadow">
+        <button type="button"
+          class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-cyan-700 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+          data-modal-hide="chrome-extension-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+        <div class="px-6 py-6 lg:px-8">
+          <h3 class="mb-4 text-xl font-medium text-white">
+            Follow these steps to install a Chrome extension (CHROME ONLY):
+          </h3>
 
-      <
-      <!-- Footer - END -->
-    </main>
+          <ol class="list-decimal list-inside mb-4 text-gray-300">
+            <li>
+              Download the extension files here:
+              <a href="https://github.com/KBVE/lofifocus-chrome-extension/releases/latest" target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#4ca0d5]">https://github.com/KBVE/lofifocus-chrome-extension/releases/latest</a>
+            </li>
+            <i>You will need to download the files that make up the chrome
+              extension, usually as a zip folder from the developer. This
+              includes the manifest.json file, HTML/CSS/JS assets, and any
+              images or resources.</i>
+            <li>
+              Unzip the folder containing the extension source files to a
+              location on your computer. You should now have a folder that
+              contains a popup.html, manfiest.json, and several other files.
+            </li>
+            <li>
+              Open Google Chrome and navigate to <i>chrome://extensions</i> in the
+              address bar.
+            </li>
+            <li>Enable Developer Mode.</li>
+            <li>
+              Click the "Load Unpacked" button and select the folder
+              containing your extracted extension files. This will install the
+              extension in developer mode.
+            </li>
+            <li>
+              For easy access, click the puzzle icon for your extensions and
+              pin your newly installed extension. This will make it appear as
+              an icon in your browser toolbar.
+            </li>
+          </ol>
+          <p class="text-gray-300">
+            That's it! The extension will be added to your browser and you can
+            start using it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Chrome Extension Modal - END -->
 
-    <!-- Modals - START -->
-    <!-- Main modal -->
-
-    <!-- Auth Modal - START -->
-    <div
-      id="authentication-modal"
-      tabindex="-1"
-      aria-hidden="true"
-      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative w-full max-w-md max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-gray-700 rounded-lg shadow">
-          <button
-            type="button"
-            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-cyan-700 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
-            data-modal-hide="authentication-modal">
-            <svg
-              class="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14">
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-            </svg>
-            <span class="sr-only">Close modal</span>
-          </button>
-          <div class="px-6 py-6 lg:px-8">
-            <h3 class="mb-4 text-xl font-medium text-white">
-              Sign in to our Platform!
-            </h3>
-            <form class="space-y-6" action="#">
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-white"
-                  >Your email</label
-                >
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
-                  placeholder="name@company.com"
-                  required />
-              </div>
-              <div>
-                <label
-                  for="password"
-                  class="block mb-2 text-sm font-medium text-white"
-                  >Your password</label
-                >
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
-                  required />
-              </div>
-              <div class="flex justify-between">
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input
-                      id="remember"
-                      type="checkbox"
-                      value=""
-                      class="w-4 h-4 border border-gray-500 rounded bg-gray-600 focus:ring-3 focus:ring-offset-gray-800 ring-offset-gray-800 accent-cyan-500"
-                      required />
-                  </div>
-                  <label
-                    for="remember"
-                    class="ml-2 text-sm font-medium text-gray-300"
-                    >Remember me</label
-                  >
+  <!-- Test Form Modal - START -->
+  <div id="test-form-modal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-md max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-gray-700 rounded-lg shadow">
+        <button type="button"
+          class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-cyan-700 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
+          data-modal-hide="test-form-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+        <div class="px-6 py-6 lg:px-8">
+          <h3 class="mb-4 text-xl font-medium text-white">
+            Test our music ai generation platform
+          </h3>
+          <form class="space-y-6" action="#">
+            <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-white">Your email</label>
+              <input type="email" name="email" id="email"
+                class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
+                placeholder="name@company.com" required />
+            </div>
+            <div>
+              <label for="password" class="block mb-2 text-sm font-medium text-white">Your password</label>
+              <input type="password" name="password" id="password" placeholder="••••••••"
+                class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
+                required />
+            </div>
+            <div class="flex justify-between">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="remember" type="checkbox" value=""
+                    class="w-4 h-4 border border-gray-500 rounded bg-gray-600 focus:ring-3 focus:ring-offset-gray-800 ring-offset-gray-800 accent-cyan-500"
+                    required />
                 </div>
-                <a href="#" class="text-sm text-cyan-500 hover:underline"
-                  >Lost Password?</a
-                >
+                <label for="remember" class="ml-2 text-sm font-medium text-gray-300">Remember me</label>
               </div>
-              <button
-                type="submit"
-                class="w-full text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Login to your account
-              </button>
-              <div class="text-sm font-medium text-gray-500 text-gray-300">
-                Not registed?
-                <a href="#" class="text-cyan-500 hover:underline"
-                  >Create account</a
-                >
-              </div>
-            </form>
-          </div>
+              <a href="#" class="text-sm text-cyan-500 hover:underline">Lost Password?</a>
+            </div>
+            <button type="submit"
+              class="w-full text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+              Login to your account
+            </button>
+            <div class="text-sm font-medium text-gray-500 text-gray-300">
+              Not registered?
+              <a href="#" class="text-cyan-500 hover:underline">Create account</a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <!-- Auth Model - END -->
+  </div>
+  <!-- Auth Model - END -->
+</body>
 
-    <!-- Chrome Extension Modal - START -->
-    <div
-      id="chrome-extension-modal"
-      tabindex="-1"
-      aria-hidden="true"
-      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative w-full max-w-md max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-gray-700 rounded-lg shadow">
-          <button
-            type="button"
-            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-cyan-700 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
-            data-modal-hide="chrome-extension-modal">
-            <svg
-              class="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14">
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-            </svg>
-            <span class="sr-only">Close modal</span>
-          </button>
-          <div class="px-6 py-6 lg:px-8">
-            <h3 class="mb-4 text-xl font-medium text-white">
-              Follow these steps to install a Chrome extension:
-            </h3>
-
-            <ol class="list-decimal list-inside mb-4 text-gray-300">
-              <li>
-                Download the extension files here:
-                <a
-                  href="https://github.com/KBVE/lofifocus-chrome-extension/releases/latest"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style="color: blue"
-                  >https://github.com/KBVE/lofifocus-chrome-extension/releases/latest</a
-                >
-              </li>
-              <i
-                >You will need to download the files that make up the chrome
-                extension, usually as a zip folder from the developer. This
-                includes the manifest.json file, HTML/CSS/JS assets, and any
-                images or resources.</i
-              >
-              <li>
-                Unzip the folder containing the extension source files to a
-                location on your computer. You should now have a folder that
-                contains a popup.html, manfiest.json, and several other files.
-              </li>
-              <li>
-                Open Google Chrome and navigate to `chrome://extensions` in the
-                address bar.
-              </li>
-              <li>Enable Developer Mode.</li>
-              <li>
-                Click the "Load Unpacked" button and select the folder
-                containing your extracted extension files. This will install the
-                extension in developer mode.
-              </li>
-              <li>
-                For easy access, click the puzzle icon for your extensions and
-                pin your newly installed extension. This will make it appear as
-                an icon in your browser toolbar.
-              </li>
-            </ol>
-            <p class="text-gray-300">
-              That's it! The extension will be added to your browser and you can
-              start using it.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Chrome Extension Modal - END -->
-
-    <!-- Test Form Modal - START -->
-    <div
-      id="test-form-modal"
-      tabindex="-1"
-      aria-hidden="true"
-      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative w-full max-w-md max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-gray-700 rounded-lg shadow">
-          <button
-            type="button"
-            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-600 hover:text-cyan-700 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center"
-            data-modal-hide="test-form-modal">
-            <svg
-              class="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14">
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-            </svg>
-            <span class="sr-only">Close modal</span>
-          </button>
-          <div class="px-6 py-6 lg:px-8">
-            <h3 class="mb-4 text-xl font-medium text-white">
-              Test our music ai generation platform
-            </h3>
-            <form class="space-y-6" action="#">
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-white"
-                  >Your email</label
-                >
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
-                  placeholder="name@company.com"
-                  required />
-              </div>
-              <div>
-                <label
-                  for="password"
-                  class="block mb-2 text-sm font-medium text-white"
-                  >Your password</label
-                >
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-cyan-500 focus:border-cyan-500 block w-full p-2.5"
-                  required />
-              </div>
-              <div class="flex justify-between">
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input
-                      id="remember"
-                      type="checkbox"
-                      value=""
-                      class="w-4 h-4 border border-gray-500 rounded bg-gray-600 focus:ring-3 focus:ring-offset-gray-800 ring-offset-gray-800 accent-cyan-500"
-                      required />
-                  </div>
-                  <label
-                    for="remember"
-                    class="ml-2 text-sm font-medium text-gray-300"
-                    >Remember me</label
-                  >
-                </div>
-                <a href="#" class="text-sm text-cyan-500 hover:underline"
-                  >Lost Password?</a
-                >
-              </div>
-              <button
-                type="submit"
-                class="w-full text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:outline-none focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Login to your account
-              </button>
-              <div class="text-sm font-medium text-gray-500 text-gray-300">
-                Not registered?
-                <a href="#" class="text-cyan-500 hover:underline"
-                  >Create account</a
-                >
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Auth Model - END -->
-  </body>
 </html>
