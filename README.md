@@ -31,10 +31,6 @@ https://storageapi.webenclave.com/hackathon/1693446441558.wav
 ---
 # Video 
 Youtube video: https://www.youtube.com/embed/szN4w4cd02s?si=cd0fz-zlLhpL_sYR
-<iframe width="560" height="315" src="https://www.youtube.com/embed/szN4w4cd02s?si=cd0fz-zlLhpL_sYR"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
 
 ---
 
