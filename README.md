@@ -10,6 +10,8 @@ Download Chrome Extension: https://github.com/KBVE/lofifocus-chrome-extension/re
 
 Custom Trained LoFi Model: https://storageapi.webenclave.com/hackathon/lm_final.pt
 
+AI Voice Generation via ElevenLabs: https://storageapi.webenclave.com/hackathon/ElevenLabs_2023-08-29T22_11_24_Charlotte_pre_s50_sb75_b_m1.mp3
+
 Songs Generated using facebook/musicgen-small:
 
 https://storageapi.webenclave.com/hackathon/77896957728656.wav
