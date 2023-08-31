@@ -89,15 +89,13 @@ With Audiocraft we can:
 
 ## How to Install Our Chrome Extension
 
-1. Download the extension files here:
+1. Download the extension files here: https://github.com/KBVE/lofifocus-chrome-extension/releases/latest
    - You will need to download the files that make up the chrome extension, usually as a zip folder from the developer. This includes the manifest.json file, HTML/CSS/JS assets, and any images or resources.
-2. Extract the zip folder
-3. Unzip the folder containing the extension source files to a location on your computer. Avoid folders that require administrator access.
-4. Open Google Chrome and navigate to chrome://extensions in the address bar.
-5. Enable Developer Mode via the toggle in the top right.
-   Load the extension
-6. Click the "Load Unpacked" button and select the folder containing your extracted extension files. This will install the extension in developer mode.
-7. For easy access, click the puzzle icon for your extensions and pin your newly installed extension. This will make it appear as an icon in your browser toolbar.
+2. Unzip the folder containing the extension source files to a location on your computer. You should now have a folder that contains a popup.html, manfiest.json, and several other files.
+3. Open Google Chrome and navigate to `chrome://extensions` in the address bar.
+4. Enable Developer Mode.
+5. Click the "Load Unpacked" button and select the folder containing your extracted extension files. This will install the extension in developer mode.
+6. For easy access, click the puzzle icon for your extensions and pin your newly installed extension. This will make it appear as an icon in your browser toolbar.
 
 ## Features
 
